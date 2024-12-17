@@ -2,6 +2,8 @@ import logging
 import sys
 import time
 from threading import Event
+import numpy as np
+from scipy import signal
 
 import cflib.crtp
 from cflib.crazyflie import Crazyflie
@@ -13,8 +15,12 @@ URI = uri_helper.uri_from_env(default='radio://0/80/2M/E7E7E7E702')
 DEFAULT_HEIGHT = 0.5
 flying = False
 deck_attached_event = Event()
-
 logging.basicConfig(level=logging.ERROR)
+duration = 10  # Total time duration in seconds
+sampling_rate = 1000  # Number of samples per second (Hz)
+frequency =  0.2
+time = np.linspace(0, duration, int(sampling_rate * duration), endpoint=False)
+square_signal = signal.square(2 * np.pi * frequency * time)
 
 def param_deck_flow(_, value_str):
     value = int(value_str)
