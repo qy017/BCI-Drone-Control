@@ -54,5 +54,20 @@ def main():
         time.sleep(3)
         land(scf)
         scf.cf.close_link()
+        # start_time = time.time()
+        # try:
+        #     for t, signal_value in zip(time, signal_square):
+        #         # Convert the square wave signal to a control value (thrust or velocity)
+        #         # In this case, we use the signal value as desired height or thrust
+        #         target_height = signal_value * 2  # Scale to control height (0 to 2 meters)
+
+        #         # Command the drone to fly at the target height (can be extended to more control)
+        #         cf.go_to([0, 0, target_height], 0.5)  # Go to target height with speed
+
+        #         # Wait for the next control step
+        #         time.sleep(time_step)
+
+        # except KeyboardInterrupt:
+        #     print("Flight interrupted.")
 
 main()
